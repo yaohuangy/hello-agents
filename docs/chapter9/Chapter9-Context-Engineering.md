@@ -252,12 +252,12 @@ def _gather(
     # 2. Retrieve relevant memories from memory system
     if self.memory_tool:
         try:
-            memory_results = self.memory_tool.execute(
-                "search",
-                query=user_query,
-                limit=10,
-                min_importance=0.3
-            )
+            memory_results = self.memory_tool.run({
+                "action": "search",
+                "query": user_query,
+                "limit": 10,
+                "min_importance": 0.3
+            })
             # Parse memory results and convert to ContextPacket
             memory_packets = self._parse_memory_results(memory_results, user_query)
             packets.extend(memory_packets)
@@ -267,12 +267,12 @@ def _gather(
     # 3. Retrieve relevant knowledge from RAG system
     if self.rag_tool:
         try:
-            rag_results = self.rag_tool.execute(
-                "search",
-                query=user_query,
-                limit=5,
-                min_score=0.3
-            )
+            rag_results = self.rag_tool.run({
+                "action": "search",
+                "query": user_query,
+                "limit": 5,
+                "min_score": 0.3
+            })
             # Parse RAG results and convert to ContextPacket
             rag_packets = self._parse_rag_results(rag_results, user_query)
             packets.extend(rag_packets)
@@ -614,19 +614,19 @@ conversation_history = [
 ]
 
 # 4. Add some memories
-memory_tool.execute(
-    "add",
-    content="User is developing a data analysis tool using Python and Pandas",
-    memory_type="semantic",
-    importance=0.8
-)
+memory_tool.run({
+    "action": "add",
+    "content": "User is developing a data analysis tool using Python and Pandas",
+    "memory_type": "semantic",
+    "importance": 0.8
+})
 
-memory_tool.execute(
-    "add",
-    content="Completed development of CSV reading module",
-    memory_type="episodic",
-    importance=0.7
-)
+memory_tool.run({
+    "action": "add",
+    "content": "Completed development of CSV reading module",
+    "memory_type": "episodic",
+    "importance": 0.7
+})
 
 # 5. Build context
 context = builder.build(
@@ -741,12 +741,12 @@ class ContextAwareAgent(SimpleAgent):
         )
 
         # 4. Record important interactions to memory system
-        self.memory_tool.execute(
-            "add",
-            content=f"Q: {user_input}\nA: {response[:200]}...",  # Summary
-            memory_type="episodic",
-            importance=0.6
-        )
+        self.memory_tool.run({
+            "action": "add",
+            "content": f"Q: {user_input}\nA: {response[:200]}...",  # Summary
+            "memory_type": "episodic",
+            "importance": 0.6
+        })
 
         return response
 
@@ -1957,13 +1957,13 @@ Information discovered by TerminalTool can be stored in the memory system:
 structure = terminal.run({"command": "tree -L 2 src"})
 
 # Store in semantic memory
-memory_tool.execute(
-    "add",
-    content=f"Project structure:\n{structure}",
-    memory_type="semantic",
-    importance=0.8,
-    metadata={"type": "project_structure"}
-)
+memory_tool.run({
+    "action": "add",
+    "content": f"Project structure:\n{structure}",
+    "memory_type": "semantic",
+    "importance": 0.8,
+    "metadata": {"type": "project_structure"}
+})
 ```
 
 (2) Collaboration with NoteTool

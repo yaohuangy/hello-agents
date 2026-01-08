@@ -61,12 +61,12 @@ class ContextAwareAgent(SimpleAgent):
         )
 
         # 4. 将重要交互记录到记忆系统
-        # self.memory_tool.execute(
-        #     "add",
-        #     content=f"Q: {user_input}\nA: {response[:200]}...",  # 摘要
-        #     memory_type="episodic",
-        #     importance=0.6
-        # )
+        # self.memory_tool.run({
+        #     "action": "add",
+        #     "content": f"Q: {user_input}\nA: {response[:200]}...",  # 摘要
+        #     "memory_type": "episodic",
+        #     "importance": 0.6
+        # })
 
         return response
 

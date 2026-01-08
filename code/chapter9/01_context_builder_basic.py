@@ -51,19 +51,19 @@ def main():
 
     # 4. 添加一些记忆
     print("4. 添加记忆...")
-    # memory_tool.execute(
-    #     "add",
-    #     content="用户正在开发数据分析工具,使用Python和Pandas",
-    #     memory_type="semantic",
-    #     importance=0.8
-    # )
+    # memory_tool.run({
+    #     "action": "add",
+    #     "content": "用户正在开发数据分析工具,使用Python和Pandas",
+    #     "memory_type": "semantic",
+    #     "importance": 0.8
+    # })
 
-    # memory_tool.execute(
-    #     "add",
-    #     content="已完成CSV读取模块的开发",
-    #     memory_type="episodic",
-    #     importance=0.7
-    # )
+    # memory_tool.run({
+    #     "action": "add",
+    #     "content": "已完成CSV读取模块的开发",
+    #     "memory_type": "episodic",
+    #     "importance": 0.7
+    # })
 
     # 5. 构建上下文
     print("5. 构建上下文...\n")
