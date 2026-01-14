@@ -174,7 +174,7 @@ for i in range(5): # 设置最大循环次数
     # 3.3. 解析并执行行动
     action_match = re.search(r"Action: (.*)", llm_output, re.DOTALL)
     if not action_match:
-        print("解析错误：模型输出中未找到 Action。")
+        print(f"任务完成: {llm_output.strip()}")
         break
     action_str = action_match.group(1).strip()
 
