@@ -32,7 +32,7 @@ To make our code more universal, we will uniformly configure model service-relat
 
 1. In your project root directory, create a file named `.env`.
 2. In this file, add the following content. You can point it to OpenAI's official service or any local/third-party service compatible with the OpenAI interface according to your needs.
-3. If you really don't know how to obtain it, you can refer to Section [1.2 API 设置](https://datawhalechina.github.io/handy-multi-agent/#/./chapter1/1-Basic-Configuration?id=_12-api-settings) in another Datawhale tutorial.
+3. If you really don't know how to obtain it, you can refer to [Environment Configuration](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra07-环境配置.md).
 
 ```bash
 # .env file
