@@ -1283,10 +1283,11 @@ print(f"数学专用Agent结果: {math_result}")
 
 FunctionCallAgent是hello-agents在0.2.8之后引入的Agent，它基于OpenAI原生函数调用机制的Agent，展示了如何使用OpenAI的函数调用机制来构建Agent。
 它支持以下功能：
-_build_tool_schemas:通过工具的description构建OpenAI的function calling schema
-_extract_message_content:从OpenAI的响应中提取文本
-_parse_function_call_arguments:解析模型返回的JSON字符串参数
-_convert_parameter_types:转换参数类型
+
+- _build_tool_schemas:通过工具的description构建OpenAI的function calling schema
+- _extract_message_content:从OpenAI的响应中提取文本
+- _parse_function_call_arguments:解析模型返回的JSON字符串参数
+- _convert_parameter_types:转换参数类型
 
 这些功能可以使其具备原生的OpenAI Function Calling的能力，对比使用prompt约束的方式，具备更强的鲁棒性。
 ```python
